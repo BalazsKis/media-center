@@ -1,0 +1,30 @@
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(0deg, #000000, #000000 10%, #111111 25%, #222222 45%, #404040);
+    color: #e0e0e0;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Media Center</title>
+
+    <!-- Load: sytlesheets -->
+    <link href="resources/fonts/raleway/raleway.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- Load: 3rd party frameworks -->
+    <script src="frameworks/jquery/jquery.js"></script>
+    <script src="frameworks/moment/moment.js"></script>
+    <script src="frameworks/angular/angular.js"></script>
+    <script src="frameworks/angular/angular-route.js"></script>
+    <script src="frameworks/angular/angular-animate.js"></script>
+    <script src="frameworks/angular/angular-aria.js"></script>
+    <script src="frameworks/angular/angular-messages.js"></script>
+
+    <!-- Load: basic app modules -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>
+    <script src="app/app.directives.js"></script>
+    <script src="app/app.filters.js"></script>
+    <script src="app/app.constants.js"></script>
+
+    <!-- Load: services -->
+    <!-- TODO: load files -->
+
+    <!-- Load: controllers -->
+    <script src="app/controllers/homeController.js"></script>
+</head>
+
+<body ng-app="app">
+    <div class="content">
+        <div ng-view></div>
+    </div>
+</body>
+
+</html>
