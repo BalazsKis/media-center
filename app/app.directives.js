@@ -1,19 +1,19 @@
-app.directive("stopEvent", function() {
+app.directive("stopEvent", function () {
     return {
         restrict: "A",
-        link: function(scope, element, attr) {
-            element.bind("click", function(e) {
+        link: function (scope, element, attr) {
+            element.bind("click", function (e) {
                 e.stopPropagation();
             });
         }
     };
 });
 
-app.directive("enterExecute", function() {
-    return function(scope, element, attrs) {
-        element.bind("keydown keypress", function(event) {
+app.directive("enterExecute", function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
             if (event.which === 13) {
-                scope.$apply(function() {
+                scope.$apply(function () {
                     scope.$eval(attrs.enterExecute);
                 });
 
@@ -23,7 +23,7 @@ app.directive("enterExecute", function() {
     };
 });
 
-app.directive('updateBackground', function($http) {
+app.directive('updateBackground', function ($http) {
     function _arrayBufferToBase64(buffer) {
         var binary = '';
         var bytes = new Uint8Array(buffer);
@@ -37,17 +37,17 @@ app.directive('updateBackground', function($http) {
     return {
         restrict: 'AE',
         replace: true,
-        link: function(scope, elem, attrs) {
-            setInterval(function() {
+        link: function (scope, elem, attrs) {
+            setInterval(function () {
                 $http({
                     method: 'GET',
                     url: 'https://source.unsplash.com/3840x2160?nature,landscape',
                     responseType: 'arraybuffer'
-                }).then(function(response){
+                }).then(function (response) {
                     var str = _arrayBufferToBase64(response.data);
                     elem.css("background-image", 'url("data:image/jpg;base64,' + str + '")');
                 });
-            }, 10000);
+            }, 3600000);
         }
     };
 });
