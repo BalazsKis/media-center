@@ -22,3 +22,15 @@ app.directive("enterExecute", function() {
         });
     };
 });
+
+app.directive('updateBackground', function() {
+    return {
+        restrict: 'AE',
+        replace: true,
+        link: function(scope, elem, attrs) {
+            setInterval(function() {
+                elem.css("background-image", 'url("https://source.unsplash.com/3840x2160?nature,landscape")');
+            }, 10000);
+        }
+    };
+});

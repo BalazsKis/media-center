@@ -8,6 +8,7 @@
     <!-- Load: sytlesheets -->
     <link href="resources/fonts/raleway/raleway.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
+    <link href="styles/home.css" rel="stylesheet">
 
     <!-- Load: 3rd party frameworks -->
     <script src="frameworks/jquery/jquery.js"></script>
@@ -32,10 +33,8 @@
     <script src="app/controllers/homeController.js"></script>
 </head>
 
-<body ng-app="app">
-    <div class="content">
-        <div ng-view></div>
-    </div>
+<body ng-app="app" update-background>
+    <ng-view/>
 </body>
 
 </html>

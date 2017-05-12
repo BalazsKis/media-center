@@ -8,7 +8,13 @@ let win
 
 function createWindow() {
     // Create the browser window.
-    win = new BrowserWindow({ width: 800, height: 450 })
+    win = new BrowserWindow({
+        width: 800,
+        height: 450,
+        webPreferences: {
+            experimentalFeatures: true,
+        }
+    })
     win.setMenu(null);
 
     // and load the index.html of the app.
