@@ -1,8 +1,12 @@
-app.controller("homeController", [
-    "timeHandler", "$timeout", "$scope",
-    function(timeHandler, $timeout, $scope) {
+(function(){
+    'use strict';
+    
+    angular.module("app")
+    .controller("homeController", ["$scope", "$timeout", "moment",
+        function($scope, $timeout, moment) {
+            
+            //TODO: Write home functionality here.
 
-        //TODO: Write home functionality here.
-
-    }
-]);
+        }
+    ]);
+})();
