@@ -10,7 +10,6 @@
 
 .widget {
     background: rgba(0, 0, 0, 0.25);
-    padding: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
