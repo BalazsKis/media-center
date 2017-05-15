@@ -15,16 +15,17 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 10px;
 }
 
 .widget.upper-left {
-    margin: 12px;
+    margin: 15px;
     grid-column: 1;
     grid-row: 1;
 }
 
 .widget.upper-right {
-    margin: 12px;
+    margin: 15px;
     grid-column: 3;
     grid-row: 1;
 }
@@ -36,7 +37,7 @@
 }
 
 .widget.lower-left {
-    margin: 12px;
+    margin: 15px;
     grid-column: 1;
     grid-row: 3;
 }
