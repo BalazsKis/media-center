@@ -1,34 +1,33 @@
-<div class="weather-wrapper"
-     ng-controller="weatherWidgetController">
+<div class="weather-wrapper" ng-controller="weatherWidgetController">
     <div class="weather-widget city">{{currentObservation.observation_location.city}}</div>
     <div class="weather-widget condition">
         {{currentObservation.weather}}
     </div>
     <div class="weather-widget degree">
-        {{currentObservation.dewpoint_c}} °C
+        {{currentObservation.temp_c}} °C
     </div>
     <div class="weather-widget icon">
         <i class="wu wu-white wu-256 wu-{{currentObservation.icon}}"></i>
     </div>
     <div class="weather-widget details">
         <div class="detail">
-            <label>Humidity:</label> 
+            <label>Humidity:</label>
             <div>{{currentObservation.relative_humidity}}</div>
         </div>
         <div class="detail">
-            <label>Wind:</label> 
+            <label>Wind:</label>
             <div>{{currentObservation.wind_dir}} {{currentObservation.wind_kph}} km/h</div>
         </div>
         <div class="detail">
-            <label>Pressure:</label> 
+            <label>Pressure:</label>
             <div>{{currentObservation.pressure_mb}} mbar</div>
         </div>
         <div class="detail">
-            <label>Precipitation today:</label> 
+            <label>Precipitation today:</label>
             <div>{{currentObservation.precip_today_metric}} mm</div>
         </div>
-        
+
     </div>
     <div class="weather-widget last-update">{{currentObservation.observation_time}}</div>
-    
+
 </div>
