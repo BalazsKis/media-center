@@ -10,6 +10,7 @@
 
 .widget {
     background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,26 +18,31 @@
 }
 
 .widget.upper-left {
+    margin: 12px;
     grid-column: 1;
     grid-row: 1;
 }
 
 .widget.upper-right {
+    margin: 12px;
     grid-column: 3;
     grid-row: 1;
 }
 
 .widget.middle {
+    margin: 0;
     grid-row: 2;
     grid-column: 2;
 }
 
 .widget.lower-left {
+    margin: 12px;
     grid-column: 1;
     grid-row: 3;
 }
 
 .widget.lower-right {
+    margin: 12px;
     grid-column: 3;
     grid-row: 3;
 }
