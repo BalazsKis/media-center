@@ -1,5 +1,15 @@
 {
-    "name": "electron-app",
+    "name": "media-center",
     "version": "0.1.0",
-    "main": "main.js"
+    "main": "main.js",
+    "dependencies": {
+        "jquery": "3.2.1",
+        "moment": "2.18.1",
+        "weather-underground-icons": "1.0.0",
+        "angular": "1.6.4",
+        "angular-animate": "1.6.4",
+        "angular-aria": "1.6.4",
+        "angular-messages": "1.6.4",
+        "angular-route": "1.6.4"
+    }
 }
