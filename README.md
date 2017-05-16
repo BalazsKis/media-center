@@ -1,3 +1,4 @@
-![Background](/resources/images/background.jpg)
 # Media center
-An electron-based solution for simple folder browsing and an informative home screen
+*An electron-based solution for simple folder browsing and an informative home screen*
+
+![Background](/resources/images/background.jpg)
