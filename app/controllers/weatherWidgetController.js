@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('app')
-        .controller('weatherWidgetController', ['$timeout', '$scope', '$http',
-            function($timeout, $scope, $http) {
+        .controller('weatherWidgetController', ['$interval', '$scope', '$http',
+            function($interval, $scope, $http) {
                 $scope.title = 'Weather widget';
                 var wuUrl = 'http://api.wunderground.com/api/#apiKey#/conditions/q/#location#.json';
                 var wuApiKey = '793e759bef2186c4';
@@ -13,7 +13,7 @@
                 $scope.currentObservation = {};
                 updateWeather();
 
-                $timeout(updateWeather, updateIntervalMinutes * 60000);
+                $interval(updateWeather, updateIntervalMinutes * 60000);
 
                 function updateWeather() {
                     var url = wuUrl.replace('#apiKey#', wuApiKey).replace('#location#', location);

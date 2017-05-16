@@ -1,0 +1,32 @@
+.clock-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.clock-widget {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.clock-widget.time {
+    font-size: 11em;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
+}
+
+.clock-widget.bar {
+    height: 0.4em;
+    margin-top: 3px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.clock-widget.date {
+    margin-top: 3px;
+    font-size: 2.5em;
+}
