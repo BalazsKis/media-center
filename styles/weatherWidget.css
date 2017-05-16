@@ -30,6 +30,7 @@
 
 .weather-widget.degree {
     font-size: 6em;
+    text-shadow: 3px 3px 2px rgba(0, 0, 0, 0.5);
     grid-column: 1;
     grid-row: 3;
 }
@@ -38,26 +39,29 @@
     grid-column: 2;
     grid-row: 2 / 4;
 }
-    .weather-widget.icon i {
-        background-repeat: no-repeat;
-        width: 100%;
-    }
+
+.weather-widget.icon i {
+    background-repeat: no-repeat;
+    width: 100%;
+}
 
 .weather-widget.details {
     font-size: 1.2em;
     grid-column: 1 / 3;
     grid-row: 4;
 }
-    .weather-widget.details .detail {
-        margin: 0 15px;
-    }
-        .weather-widget.details .detail label {
-            font-weight: bold;
-        }
 
-        .weather-widget.details .detail div {
-            display: block;
-        }
+.weather-widget.details .detail {
+    margin: 0 15px;
+}
+
+.weather-widget.details .detail label {
+    font-weight: bold;
+}
+
+.weather-widget.details .detail div {
+    display: block;
+}
 
 .weather-widget.last-update {
     font-size: .8em;
