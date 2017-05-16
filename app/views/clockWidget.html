@@ -1,7 +1,7 @@
 <div class="clock-wrapper" ng-controller="clockWidgetController">
-    <div class="clock-widget time">{{currentDateTime | toTime}}</div>
+    <div class="clock-widget time">{{currentDateTime | timeToString:timeFormat}}</div>
     <div class="clock-widget bar hour" style="width: {{currentDateTime | toHourPercent}}"></div>
     <div class="clock-widget bar minute" style="width: {{currentDateTime | toMinutePercent}}"></div>
     <div class="clock-widget bar second" style="width: {{currentDateTime | toSecondPercent}}"></div>
-    <div class="clock-widget date">{{currentDateTime | toDate}}</div>
+    <div class="clock-widget date">{{currentDateTime | timeToString:dateFormat}}</div>
 </div>

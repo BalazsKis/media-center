@@ -15,14 +15,9 @@
                 return (ratio * 100).toFixed(fraction) + "%";
             };
         })
-        .filter("toTime", function() {
-            return function(dateTimeObject) {
-                return dateTimeObject.format("HH:mm"); // TODO: Use app constant
-            };
-        })
-        .filter("toDate", function() {
-            return function(dateTimeObject) {
-                return dateTimeObject.format("dddd, MMMM Do, YYYY"); // TODO: Use app constant
+        .filter("timeToString", function() {
+            return function(dateTimeObject, formatString) {
+                return dateTimeObject.format(formatString);
             };
         })
         .filter("toHourPercent", function() {
