@@ -1,4 +1,4 @@
-<div class="weather-wrapper" ng-controller="weatherWidgetController">
+<div class="weather-wrapper" ng-controller="weatherWidgetController" ng-click="switchDetails()">
     <div class="weather-widget city">{{currentObservation.observation_location.city}}</div>
     <div class="weather-widget condition">
         {{currentObservation.weather}}
@@ -9,25 +9,37 @@
     <div class="weather-widget icon">
         <i class="wu wu-white wu-256 wu-{{currentObservation.icon}}"></i>
     </div>
-    <div class="weather-widget details">
-        <div class="detail">
-            <label>Humidity:</label>
-            <div>{{currentObservation.relative_humidity}}</div>
-        </div>
-        <div class="detail">
-            <label>Wind:</label>
-            <div>{{currentObservation.wind_dir}} {{currentObservation.wind_kph}} km/h</div>
-        </div>
-        <div class="detail">
-            <label>Pressure:</label>
-            <div>{{currentObservation.pressure_mb}} mbar</div>
-        </div>
-        <div class="detail">
-            <label>Precipitation today:</label>
-            <div>{{currentObservation.precip_today_metric}} mm</div>
-        </div>
-
+    <div class="weather-widget details" ng-include="detailsType">        
     </div>
     <div class="weather-widget last-update">{{currentObservation.observation_time}}</div>
 
 </div>
+
+<script type="text/ng-template" id="weatherDetails">
+    <div class="detail">
+        <label>Humidity:</label>
+        <div>{{currentObservation.relative_humidity}}</div>
+    </div>
+    <div class="detail">
+        <label>Wind:</label>
+        <div>{{currentObservation.wind_dir}} {{currentObservation.wind_kph}} km/h</div>
+    </div>
+    <div class="detail">
+        <label>Pressure:</label>
+        <div>{{currentObservation.pressure_mb}} mbar</div>
+    </div>
+    <div class="detail">
+        <label>Precipitation today:</label>
+        <div>{{currentObservation.precip_today_metric}} mm</div>
+    </div>
+</script>
+
+<script type="text/ng-template" id="forecast">
+    <div ng-repeat="day in forecast.simpleforecast.forecastday | limitTo: 4" 
+         class="forecast wu wu-white wu-64 wu-{{day.icon}}">
+        <div>{{day.date.weekday_short}}</div>
+        <br>
+        <label>{{day.low.celsius}} C° | {{day.high.celsius}} C°</label>
+    </div>
+</script>
+
