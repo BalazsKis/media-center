@@ -15,24 +15,19 @@
                 return (ratio * 100).toFixed(fraction) + "%";
             };
         })
-        .filter("timeToString", function() {
-            return function(dateTimeObject, formatString) {
-                return dateTimeObject.format(formatString);
-            };
-        })
         .filter("toHourPercent", function() {
             return function(dateTimeObject) {
-                return (dateTimeObject.hours() * 100 / 24) + "%";
+                return (dateTimeObject.getHours() * 100 / 24) + "%";
             };
         })
         .filter("toMinutePercent", function() {
             return function(dateTimeObject) {
-                return (dateTimeObject.minutes() * 100 / 60) + "%";
+                return (dateTimeObject.getMinutes() * 100 / 60) + "%";
             };
         })
         .filter("toSecondPercent", function() {
             return function(dateTimeObject) {
-                return (dateTimeObject.seconds() * 100 / 60) + "%";
+                return (dateTimeObject.getSeconds() * 100 / 60) + "%";
             };
         });
 })();

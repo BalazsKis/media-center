@@ -3,10 +3,10 @@
 
     angular.module("app")
         .constant("dateTimeFormats", {
-            timeFormat: "HH:mm",
-            timeFormatWithSeconds: "HH:mm:ss",
-            dateFormat: "MMMM Do YYYY",
-            dayFormat: "dddd",
-            dateFormatWithDay: "dddd, MMMM Do, YYYY"
+            timeFormat: "H:mm",
+            timeFormatWithSeconds: "H:mm:ss",
+            dateFormat: "MMMM d, yyyy",
+            dayFormat: "EEEE",
+            dateFormatWithDay: "EEEE, MMMM d, yyyy"
         });
 })();
