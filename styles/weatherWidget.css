@@ -62,25 +62,43 @@
 
 .weather-widget.details .detail label {
     font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .weather-widget.details .detail div {
     display: block;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .weather-widget.details .forecast.wu {
     background-repeat: no-repeat;
     background-position: center;
+    opacity: .7;
 }
 
-.weather-widget.details .forecast .div {
+.weather-widget.details .forecast div {
+    display: inline-block;
+}
+
+.weather-widget.details .forecast i {
+    display: inline-block;
+}
+
+.weather-widget.details .forecast div div {
     display: block;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.weather-widget.details .forecast label {
+.weather-widget.details .forecast div div.low {
     font-weight: bold;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-size: .9em;
+    text-align: right;
+}
+
+.weather-widget.details .forecast div div.high {
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: right;
 }
 
 .weather-widget.last-update {

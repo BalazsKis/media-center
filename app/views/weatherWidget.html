@@ -35,11 +35,13 @@
 </script>
 
 <script type="text/ng-template" id="forecast">
-    <div ng-repeat="day in forecast.simpleforecast.forecastday | limitTo: 4" 
-         class="forecast wu wu-white wu-64 wu-{{day.icon}}">
-        <div>{{day.date.weekday_short}}</div>
-        <br>
-        <label>{{day.low.celsius}} C° | {{day.high.celsius}} C°</label>
+    <div ng-repeat="day in forecast.simpleforecast.forecastday | limitTo: 4" class="forecast" >
+        <div>
+            <div>{{day.date.weekday_short}}</div>
+            <div class="low">{{day.low.celsius}} C°</div>
+            <div class="high">{{day.high.celsius}} C°</div>
+        </div>
+        <i class="wu wu-white wu-64 wu-{{day.icon}}"></i>
     </div>
 </script>
 
