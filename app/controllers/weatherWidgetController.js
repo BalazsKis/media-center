@@ -9,7 +9,9 @@
                 var wuApiKey = '793e759bef2186c4';
                 var geoUrl = "https://www.googleapis.com/geolocation/v1/geolocate?key=#apiKey#";
                 var geoApiKey = "AIzaSyBK4iC3b98ptxSs3o-DPgqqiPPQQvRjmt4";
-                var updateIntervalMinutes = 5;
+                var weatherUpdateIntervalMinutes = 5;
+                var locationUpdateIntervalMinutes = 60;
+
                 var location = {
                     latitude: 47.492690,
                     longitude: 19.071557,
@@ -21,10 +23,11 @@
                 $scope.currentObservation = {};
                 $scope.forecast = {};
 
-                getLocation();
+                updateLocation();
                 updateWeather();
 
-                $interval(updateWeather, updateIntervalMinutes * 60000);
+                $interval(updateWeather, weatherUpdateIntervalMinutes * 60000);
+                $interval(updateLocation, locationUpdateIntervalMinutes * 60000);
 
                 $scope.switchDetails = function() {
                     if ($scope.detailsType === 'weatherDetails') {
@@ -43,7 +46,7 @@
                     });
                 }
 
-                function getLocation() {
+                function updateLocation() {
                     var url = geoUrl.replace('#apiKey#', geoApiKey);
                     $http.post(url, '{"considerIp": "true"}').then(function(response) {
                         if (response.data.accuracy < 2000) {
