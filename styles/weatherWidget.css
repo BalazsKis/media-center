@@ -7,9 +7,11 @@
     grid-auto-rows: minmax(20px, auto);
     grid-auto-columns: minmax(120px, auto);
 }
-    .weather-wrapper:focus {
-        outline: none;
-    }
+
+.weather-wrapper:focus {
+    outline: none;
+}
+
 .weather-widget {
     display: flex;
     justify-content: center;
