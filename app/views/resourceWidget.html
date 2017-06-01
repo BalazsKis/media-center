@@ -1,0 +1,31 @@
+<div class="resource-wrapper" ng-controller="resourceController">
+    <div class="resource-widget cpu-text">
+        CPU usage
+    </div>
+    <div class="resource-widget cpu-chart">
+        <div class="c100 p{{cpuUsage}} green"
+            ng-class="{'orange': cpuUsage >= 75}">
+            <span>{{cpuUsage}}%</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+    </div>
+    <div class="resource-widget memory-text">
+        Memory usage
+    </div>
+    <div class="resource-widget memory-chart">
+        <div class="c100 p{{memoryUsage}} green"
+            ng-class="{'orange': memoryUsage >= 75}">
+            <span>{{memoryUsage}}%</span>
+            <div class="slice">
+                <div class="bar"></div>
+                <div class="fill"></div>
+            </div>
+        </div>
+    </div>
+    <div class="resource-widget total-memory">
+        Total memory: {{memoryTotal}} GB
+    </div>
+</div>
