@@ -3,6 +3,7 @@
     "version": "0.1.0",
     "main": "main.js",
     "dependencies": {
+        "os-utils": "0.0.14",
         "jquery": "3.2.1",
         "moment": "2.18.1",
         "weather-underground-icons": "1.0.0",
