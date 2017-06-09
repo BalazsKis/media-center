@@ -9,8 +9,8 @@ let win;
 function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 800,
-        height: 450,
+        width: 1920,
+        height: 1080,
         webPreferences: {
             experimentalFeatures: true,
         }

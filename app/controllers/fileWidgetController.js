@@ -1,12 +1,12 @@
-(function() {
+(function () {
     'use strict';
 
     angular.module('app')
         .controller('fileWidgetController', ['$interval', '$scope',
-            function($interval, $scope) {
+            function ($interval, $scope) {
 
-                var mediaDirectory = "C:\\Users\\Balazs_Kis\\Desktop\\MediaDir";
-                var mediaExtensions = [".txt", ".mkv", ".srt"];
+                var mediaDirectory = "\\\\HOMESERVER\\ShareDrive_WD";
+                var mediaExtensions = [".mkv", ".avi"];
 
                 var fileUpdateIntervalSeconds = 60;
 
@@ -18,7 +18,7 @@
                 $interval(update, fileUpdateIntervalSeconds * 1000);
 
                 function update() {
-                    fs.readdir(mediaDirectory, processFileList);
+                    walk(mediaDirectory, processFileList);
                 }
 
                 function processFileList(error, files) {
@@ -41,21 +41,20 @@
                 }
 
                 function processFile(file) {
-                    var ext = path.extname(file);
-                    var completeFilePath = path.join(mediaDirectory, file);
+                    var ext = path.extname(file);                    
                     if (mediaExtensions.includes(ext)) {
                         return {
                             fileName: path.basename(file, ext),
                             extension: ext.substr(1).toUpperCase(),
-                            fullPath: completeFilePath,
-                            creationDate: fs.statSync(completeFilePath).birthtime
+                            fullPath: file,
+                            creationDate: fs.statSync(file).birthtime
                         };
                     } else {
                         return null;
                     }
                 }
 
-                $scope.selected = function(fileInfo) {
+                $scope.selected = function (fileInfo) {
                     //TODO: Open file.
                     console.log(fileInfo);
                 }
@@ -73,9 +72,32 @@
                     return "#" + "00000".substring(0, 6 - c.length) + c;
                 }
 
-                $scope.colorForText = function(text) {
+                $scope.colorForText = function (text) {
                     return intToRGB(hashCode(text));
                 }
+
+                function walk(dir, done) {
+                    var results = [];
+                    fs.readdir(dir, function (err, list) {
+                        if (err) return done(err);
+                        var pending = list.length;
+                        if (!pending) return done(null, results);
+                        list.forEach(function (file) {
+                            file = path.resolve(dir, file);
+                            fs.stat(file, function (err, stat) {
+                                if (stat && stat.isDirectory()) {
+                                    walk(file, function (err, res) {
+                                        results = results.concat(res);
+                                        if (!--pending) done(null, results);
+                                    });
+                                } else {
+                                    results.push(file);
+                                    if (!--pending) done(null, results);
+                                }
+                            });
+                        });
+                    });
+                };
 
                 update();
             }
