@@ -5,11 +5,11 @@
         .controller("resourceController", ["$scope", "$interval",
             function($scope, $interval) {
                 var osUtils = require('os-utils');
-                
-                var cpuUpdateIntervalSeconds = 2;
-                var memoryUpdateIntervalSeconds = 2;
 
-                $scope.memoryTotal = Math.round(osUtils.totalmem() / 1000); //in GB
+                var cpuUpdateIntervalSeconds = 5;
+                var memoryUpdateIntervalSeconds = 5;
+
+                $scope.memoryTotal = Math.round(osUtils.totalmem() / 1000); // in GB
 
                 $interval(updateCpuUsage, cpuUpdateIntervalSeconds * 1000);
                 $interval(updateMemoryUsage, memoryUpdateIntervalSeconds * 1000);

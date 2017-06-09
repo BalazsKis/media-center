@@ -7,6 +7,6 @@
             timeFormatWithSeconds: "H:mm:ss",
             dateFormat: "MMMM d, yyyy",
             dayFormat: "EEEE",
-            dateFormatWithDay: "EEEE, MMMM d, yyyy"
+            dateFormatWithDay: "EEEE, d MMMM"
         });
 })();

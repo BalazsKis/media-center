@@ -1,0 +1,9 @@
+<div class="file-wrapper" ng-controller="fileWidgetController">
+    <div class="file-widget title">Files in the media directory</div>
+    <div div class="file-widget list-holder">
+        <div class="file-widget file-item" ng-repeat="fileInfo in files track by fileInfo.fullPath" ng-click="selected(fileInfo);">
+            <div class="file-widget file-extension" ng-style="{'background-color': colorForText(fileInfo.fileName)}">{{fileInfo.extension}}</div>
+            <div class="file-widget file-name">{{fileInfo.fileName}}</div>
+        </div>
+    </div>
+</div>
