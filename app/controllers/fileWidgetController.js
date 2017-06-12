@@ -6,7 +6,8 @@
             function($interval, $scope) {
 
                 var mediaDirectory = "\\\\HOMESERVER\\ShareDrive_WD";
-                var mediaExtensions = [".mkv", ".avi"];
+                var mediaExtensions = [".mkv", ".flv", ".avi", ".mov", ".mpg", ".mp4", ".wmv"];
+                var ignoredKeywords = ["sample"];
 
                 var fileUpdateIntervalSeconds = 60;
 
@@ -17,7 +18,13 @@
 
                 $scope.files = [];
 
-                $interval(update, fileUpdateIntervalSeconds * 1000);
+                $scope.colorForText = function(text) {
+                    return intToRGB(hashCode(text));
+                }
+
+                $scope.selected = function(fileInfo) {
+                    cp.exec(getOpenCommand() + " " + fileInfo.fullPath);
+                }
 
                 function update() {
                     walk(mediaDirectory, processFileList);
@@ -44,20 +51,25 @@
 
                 function processFile(file) {
                     var ext = path.extname(file);
-                    if (mediaExtensions.includes(ext)) {
-                        return {
-                            fileName: path.basename(file, ext),
-                            extension: ext.substr(1).toUpperCase(),
-                            fullPath: file,
-                            creationDate: fs.statSync(file).birthtime
-                        };
-                    } else {
+
+                    // Not a media file, ignore it.
+                    if (!mediaExtensions.includes(ext)) {
                         return null;
                     }
-                }
 
-                $scope.selected = function(fileInfo) {
-                    cp.exec(getOpenCommand() + " " + fileInfo.fullPath);
+                    // Contains an ignore keyword, ignore the file.
+                    for (var i = 0; i < ignoredKeywords.length; i++) {
+                        if (file.toLowerCase().includes(ignoredKeywords[i])) {
+                            return null;
+                        }
+                    }
+
+                    return {
+                        fileName: path.basename(file, ext),
+                        extension: ext.substr(1).toUpperCase(),
+                        fullPath: file,
+                        creationDate: fs.statSync(file).birthtime
+                    };
                 }
 
                 function hashCode(text) {
@@ -71,10 +83,6 @@
                 function intToRGB(i) {
                     var c = (i & 0x00FFFFFF).toString(16);
                     return "#" + "00000".substring(0, 6 - c.length) + c;
-                }
-
-                $scope.colorForText = function(text) {
-                    return intToRGB(hashCode(text));
                 }
 
                 function walk(dir, done) {
@@ -98,7 +106,7 @@
                             });
                         });
                     });
-                };
+                }
 
                 function getOpenCommand() {
                     switch (process.platform) {
@@ -113,6 +121,7 @@
                     }
                 }
 
+                $interval(update, fileUpdateIntervalSeconds * 1000);
                 update();
             }
         ]);
