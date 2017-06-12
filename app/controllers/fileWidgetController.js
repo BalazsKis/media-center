@@ -1,9 +1,9 @@
-(function () {
+(function() {
     'use strict';
 
     angular.module('app')
         .controller('fileWidgetController', ['$interval', '$scope',
-            function ($interval, $scope) {
+            function($interval, $scope) {
 
                 var mediaDirectory = "\\\\HOMESERVER\\ShareDrive_WD";
                 var mediaExtensions = [".mkv", ".avi"];
@@ -12,6 +12,8 @@
 
                 var fs = require('fs');
                 var path = require('path');
+                var sys = require('util');
+                var cp = require('child_process');
 
                 $scope.files = [];
 
@@ -41,7 +43,7 @@
                 }
 
                 function processFile(file) {
-                    var ext = path.extname(file);                    
+                    var ext = path.extname(file);
                     if (mediaExtensions.includes(ext)) {
                         return {
                             fileName: path.basename(file, ext),
@@ -54,9 +56,8 @@
                     }
                 }
 
-                $scope.selected = function (fileInfo) {
-                    //TODO: Open file.
-                    console.log(fileInfo);
+                $scope.selected = function(fileInfo) {
+                    cp.exec(getOpenCommand() + " " + fileInfo.fullPath);
                 }
 
                 function hashCode(text) {
@@ -72,21 +73,21 @@
                     return "#" + "00000".substring(0, 6 - c.length) + c;
                 }
 
-                $scope.colorForText = function (text) {
+                $scope.colorForText = function(text) {
                     return intToRGB(hashCode(text));
                 }
 
                 function walk(dir, done) {
                     var results = [];
-                    fs.readdir(dir, function (err, list) {
+                    fs.readdir(dir, function(err, list) {
                         if (err) return done(err);
                         var pending = list.length;
                         if (!pending) return done(null, results);
-                        list.forEach(function (file) {
+                        list.forEach(function(file) {
                             file = path.resolve(dir, file);
-                            fs.stat(file, function (err, stat) {
+                            fs.stat(file, function(err, stat) {
                                 if (stat && stat.isDirectory()) {
-                                    walk(file, function (err, res) {
+                                    walk(file, function(err, res) {
                                         results = results.concat(res);
                                         if (!--pending) done(null, results);
                                     });
@@ -98,6 +99,19 @@
                         });
                     });
                 };
+
+                function getOpenCommand() {
+                    switch (process.platform) {
+                        case 'darwin':
+                            return 'open';
+                        case 'win32':
+                            return 'start';
+                        case 'win64':
+                            return 'start';
+                        default:
+                            return 'xdg-open';
+                    }
+                }
 
                 update();
             }
