@@ -5,7 +5,9 @@
         .controller('fileWidgetController', ['$interval', '$scope',
             function($interval, $scope) {
 
-                var mediaDirectory = "\\\\HOMESERVER\\ShareDrive_WD";
+                //var mediaDirectory = "\\\\HOMESERVER\\ShareDrive_WD";
+                var mediaDirectory = "C:\\Users\\Balazs_Kis\\media-dir";
+
                 var mediaExtensions = [".mkv", ".flv", ".avi", ".mov", ".mpg", ".mp4", ".wmv"];
                 var ignoredKeywords = ["sample"];
 
